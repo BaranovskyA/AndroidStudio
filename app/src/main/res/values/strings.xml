@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">education</string>
+    <string name="enterName">Enter your name:</string>
+    <string name="errorString">Error, we have digits in our name!</string>
+    <string name="successString">Everithing looks fine!</string>
+    <string name="prompt_firstname">Firstname</string>
+    <string name="prompt_repeat_password">Repeat password</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Successfull registration!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_firstname">Not a valid firstname</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>
