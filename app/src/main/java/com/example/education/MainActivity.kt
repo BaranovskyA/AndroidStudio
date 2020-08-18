@@ -1,53 +1,55 @@
 package com.example.education
 
-import android.graphics.Color
-import android.opengl.Visibility
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.support.v7.app.AppCompatActivity
+import android.util.TypedValue
 import android.widget.Button
-import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
-import java.util.regex.Pattern
+
+
 
 class MainActivity : AppCompatActivity() {
-    lateinit var login: EditText
-    lateinit var password: EditText
-    lateinit var text: TextView
-    lateinit var button: Button
-    private var isViewVisible: Boolean = true
+
+    lateinit var showStudents: TextView
+    lateinit var sortStudents : Button
+    lateinit var randomStudents : Button
+    lateinit var layoutStudents: LinearLayout
+    lateinit var listStudents: Student
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        login = findViewById(R.id.edittext_login)
-        password = findViewById(R.id.edittext_password)
-        text = findViewById(R.id.textview_message)
-        button = findViewById(R.id.button_OK)
-    }
+        showStudents = findViewById(R.id.textview_student_list)
+        sortStudents = findViewById(R.id.button_students_sort)
+        randomStudents = findViewById(R.id.button_students_random)
+        layoutStudents = findViewById(R.id.layout_students_list)
+        listStudents = Student()
 
-    fun changeVisibility(view: View) {
-        if (isViewVisible) {
-            login.visibility = View.INVISIBLE
-            password.visibility = View.INVISIBLE
-            text.visibility = View.INVISIBLE
-            button.visibility = View.INVISIBLE
-        } else {
-            login.visibility = View.VISIBLE
-            password.visibility = View.VISIBLE
-            text.visibility = View.VISIBLE
-            button.visibility = View.VISIBLE
+        showAllStudents()
+
+        sortStudents.setOnClickListener{
+            listStudents.sortStudents()
+            showAllStudents()
         }
-        isViewVisible = !isViewVisible
+
+        randomStudents.setOnClickListener{
+            listStudents.randomStudents()
+            showAllStudents()
+        }
     }
 
-    fun nameCheck(view: View) {
-        if(login.text.toString() == "icarus" && password.text.toString() == "fallen")
-        {
-            text.text = "It's so sad =("
-        } else {
-            text.text = ""
+    fun showAllStudents(){
+
+        layoutStudents.removeAllViews()
+
+        listStudents.getAllStudents().forEach {
+            showStudents = TextView(applicationContext)
+            showStudents.text = it
+            showStudents.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+            layoutStudents.addView(showStudents)
         }
     }
 }

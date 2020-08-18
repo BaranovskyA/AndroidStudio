@@ -1,60 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="30dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/edittext_login"
-        android:layout_width="200sp"
+    <LinearLayout
+        android:id="@+id/layout_students_list"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250sp"
-        android:hint="@string/prompt_login"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <EditText
-        android:id="@+id/edittext_password"
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300sp"
-        android:hint="@string/prompt_password"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:orientation="vertical"
+        >
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textview_message"
-        android:layout_width="wrap_content"
+        android:id="@+id/textview_student_list"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="360sp"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
     <Button
-        android:id="@+id/button_OK"
+        android:id="@+id/button_students_sort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:layout_marginTop="400sp"
-        android:onClick="nameCheck"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_gravity="center_horizontal"
+        android:text="Sort name"/>
 
     <Button
+        android:id="@+id/button_students_random"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visibility"
-        android:layout_marginTop="20sp"
-        android:layout_marginRight="20sp"
-        android:onClick="changeVisibility"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center_horizontal"
+        android:text="Random"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
