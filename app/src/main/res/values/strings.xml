@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">education</string>
+    <string name="app_name">STEP Education</string>
     <string name="enterName">Enter your name:</string>
     <string name="errorString">Error, we have digits in our name!</string>
     <string name="successString">Everithing looks fine!</string>
@@ -16,5 +16,8 @@
     <string name="invalid_firstname">Not a valid firstname</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="prompt_phone_number">Enter phone number: </string>
+    <string name="camera">Camera</string>
+    <string name="call">Call</string>
 
 </resources>
