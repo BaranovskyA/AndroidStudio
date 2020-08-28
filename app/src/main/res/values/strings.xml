@@ -19,9 +19,10 @@
     <string name="prompt_phone_number">Enter phone number: </string>
     <string name="camera">Camera</string>
     <string name="call">Call</string>
-
+    <string name="capture">Capture</string>
     <string name="activity_main_name_hint">Введите имя</string>
     <string name="activity_main_surname_hint">Введите фамилию</string>
     <string name="activity_main_button_transition">Отправить данные</string>
+    <string name="button_get">GET</string>
 
 </resources>
