@@ -1,6 +1,8 @@
 package com.example.education
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.FrameLayout
@@ -14,12 +16,15 @@ class MainActivity : AppCompatActivity() {
         val KEY_REQUEST_CODE = 1001
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         button_activity_main_get.setOnClickListener {
             goTo()
         }
+
+        textview_activity_main_api_version.text = "v" + Build.VERSION.SDK_INT.toString()
     }
 
     fun goTo() {
