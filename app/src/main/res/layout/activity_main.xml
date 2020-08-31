@@ -8,13 +8,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button_activity_main_get"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_get"
-        android:layout_centerInParent="true"/>
-
+    <FrameLayout
+        android:id="@+id/frameLayout_activity_main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
     <TextView
         android:id="@+id/textview_activity_main_api_version"
@@ -22,7 +20,5 @@
         android:layout_height="wrap_content"
         tools:text="123123"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"/>
-
-
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
