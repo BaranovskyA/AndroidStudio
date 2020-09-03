@@ -3,7 +3,6 @@ package com.example.education
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import kotlinx.android.synthetic.main.fragment_students.*
 class StudentsFragment : Fragment() {
 
     val students: ArrayList<Student> = ArrayList()
-    var recyclerView: RecyclerView? = null
     var adapter : StudentAdapter? = null
     private var rootView : View? = null
 
@@ -40,16 +38,16 @@ class StudentsFragment : Fragment() {
     }
 
     private fun initializeData(){
-        students.add(Student().apply { name = "Max Brown"; age = 19; avatar = R.drawable.student_icon } )
-        students.add(Student().apply { name = "Cassie Gray"; age = 18; avatar = R.drawable.student_icon } )
-        students.add(Student().apply { name = "John Green"; age = 21; avatar = R.drawable.student_icon })
-        students.add(Student().apply { name = "Darvin Yellow"; age = 20; avatar = R.drawable.student_icon })
-        students.add(Student().apply { name = "Bob Purple"; age = 18; avatar = R.drawable.student_icon })
-        students.add(Student().apply { name = "Mike White"; age = 21; avatar = R.drawable.student_icon })
-        students.add(Student().apply { name = "Mitchell Red"; age = 21; avatar = R.drawable.student_icon })
-        students.add(Student().apply { name = "Ariana Blue"; age = 20; avatar = R.drawable.student_icon })
-        students.add(Student().apply { name = "Michael Stone"; age = 19; avatar = R.drawable.student_icon })
-        students.add(Student().apply { name = "Armando Tree"; age = 21; avatar = R.drawable.student_icon })
+        students.add(Student().apply { name = "Max Brown"; age = 19; avatar = R.drawable.student_icon; group = "SEP-171" } )
+        students.add(Student().apply { name = "Cassie Gray"; age = 18; avatar = R.drawable.student_icon; group = "SEP-161" } )
+        students.add(Student().apply { name = "John Green"; age = 21; avatar = R.drawable.student_icon; group = "SEP-191" })
+        students.add(Student().apply { name = "Darvin Yellow"; age = 20; avatar = R.drawable.student_icon; group = "SEP-181" })
+        students.add(Student().apply { name = "Bob Purple"; age = 18; avatar = R.drawable.student_icon; group = "SEP-161" })
+        students.add(Student().apply { name = "Mike White"; age = 21; avatar = R.drawable.student_icon; group = "SEP-191" })
+        students.add(Student().apply { name = "Mitchell Red"; age = 21; avatar = R.drawable.student_icon; group = "SEP-191" })
+        students.add(Student().apply { name = "Ariana Blue"; age = 20; avatar = R.drawable.student_icon; group = "SEP-181" })
+        students.add(Student().apply { name = "Michael Stone"; age = 19; avatar = R.drawable.student_icon; group = "SEP-171" })
+        students.add(Student().apply { name = "Armando Tree"; age = 21; avatar = R.drawable.student_icon; group = "SEP-191" })
     }
 
     private fun initializeLayoutManager(){
