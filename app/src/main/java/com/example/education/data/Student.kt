@@ -1,4 +1,4 @@
-package com.example.education
+package com.example.education.data
 
 class Student {
     var name : String = ""

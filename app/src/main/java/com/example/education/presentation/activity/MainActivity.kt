@@ -1,9 +1,11 @@
-package com.example.education
+package com.example.education.presentation.activity
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.education.R
+import com.example.education.presentation.fragments.StudentsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -20,7 +22,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeDefaultFragment(){
-        val fragment = StudentsFragment()
+        val fragment =
+            StudentsFragment()
 
         supportFragmentManager
             .beginTransaction()

@@ -1,9 +1,13 @@
-package com.example.education
+package com.example.education.presentation.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.education.R
+import com.example.education.data.Student
+import com.example.education.presentation.holders.StudentGroupViewHolder
+import com.example.education.presentation.holders.StudentViewHolder
 
 class StudentAdapter ( private val students: ArrayList<Student> ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     val STUDENT_TYPE = 1
@@ -14,11 +18,15 @@ class StudentAdapter ( private val students: ArrayList<Student> ) : RecyclerView
         when(viewType) {
             GROUP_TYPE -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_group, parent, false)
-                return StudentGroupViewHolder(view)
+                return StudentGroupViewHolder(
+                    view
+                )
             }
             else -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item, parent, false)
-                return StudentViewHolder(view)
+                return StudentViewHolder(
+                    view
+                )
             }
         }
     }

@@ -1,8 +1,9 @@
-package com.example.education
+package com.example.education.presentation.holders
 
 import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.example.education.data.Student
 import kotlinx.android.synthetic.main.fragment_item.view.*
 
 class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
