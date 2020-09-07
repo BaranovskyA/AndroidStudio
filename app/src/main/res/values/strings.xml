@@ -3,7 +3,12 @@
     <string name="enterName">Enter your name:</string>
     <string name="errorString">Error, we have digits in our name!</string>
     <string name="successString">Everithing looks fine!</string>
-    <string name="prompt_firstname">Firstname</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_surname">Surname</string>
+    <string name="prompt_mark">Average mark</string>
+    <string name="prompt_group">Group</string>
+    <string name="prompt_add_student">Add student</string>
+    <string name="prompt_add">Add</string>
     <string name="prompt_repeat_password">Repeat password</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
@@ -25,4 +30,9 @@
     <string name="activity_main_button_transition">Отправить данные</string>
     <string name="button_get">GET</string>
     <string name="camera_permission_denied">Camera permission denied</string>
+    <string name="search_hint">Use for search by name...</string>
+    <string name="sort_by_name">Name</string>
+    <string name="sort_by_mark">Mark</string>
+    <string name="sort_by_random">Random</string>
+    <string name="sort_by_text">Sort by</string>
 </resources>

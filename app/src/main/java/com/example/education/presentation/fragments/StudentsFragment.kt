@@ -3,20 +3,26 @@ package com.example.education.presentation.fragments
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.education.R
 import com.example.education.data.Student
+import com.example.education.domain.usecase.function.seach.SearchByNameUseCase
+import com.example.education.domain.usecase.function.sort.SortByMarkUseCase
+import com.example.education.domain.usecase.function.sort.SortByNameUseCase
+import com.example.education.domain.usecase.function.sort.SortByRandomUseCase
 import com.example.education.presentation.adapter.StudentAdapter
 import kotlinx.android.synthetic.main.fragment_students.*
 
 class StudentsFragment : Fragment() {
 
     var students: ArrayList<Student> = ArrayList()
+    private var rootStudents: ArrayList<Student> = ArrayList()
     var adapter : StudentAdapter? = null
     private var rootView : View? = null
-    var COUNT_BEST_STUDENTS = 6
+    private val COUNT_BEST_STUDENTS = 50
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,24 +36,65 @@ class StudentsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initializeAdapter()
         initializeData()
+        initializeAdapter()
         initializeRecyclerView()
         initializeLayoutManager()
+
+//        fab_fragment_students.setOnClickListener {
+//            activity?.supportFragmentManager
+//                ?.beginTransaction()
+//                ?.hide(StudentsFragment())
+//                ?.add(R.id.frameLayout_activity_main_container, AddFragment())
+//                ?.commit()
+//        }
 
         sortArrayByMarks()
     }
 
+    fun addStudent(name1: String, surname: String, mark: Double, group1: String) {
+        students.add(Student().apply { name = "$name1 $surname"; age = 20; avgMark = mark;
+            group = group1; avatar = R.drawable.student_icon })
+        Log.d("SIZE", students.size.toString())
+        updateAdapter()
+    }
+
+    fun searchForName(searchText: String) {
+        if(searchText == "" && students.size <= rootStudents.size)
+            students = rootStudents
+        else
+            students = SearchByNameUseCase(students, searchText).search()
+        updateAdapter()
+    }
+
+    fun sortStudentsByName() {
+        students = SortByNameUseCase(students).sortByNameReverse()
+        updateAdapter()
+    }
+
+    fun sortStudentsByMark() {
+        students = SortByMarkUseCase(students).sortByMark()
+        updateAdapter()
+    }
+
+    fun sortStudentsByRandom() {
+        students = SortByRandomUseCase(students).sortByRandom()
+        updateAdapter()
+    }
+
+    fun updateAdapter() {
+        adapter!!.notifyDataSetChanged()
+    }
+
     fun initializeAdapter(){
-        adapter =
-            StudentAdapter(students)
+        adapter = StudentAdapter(students)
     }
 
     fun selector(s: Student): Double = s.avgMark
 
     private fun sortArrayByMarks() {
         var counter = 0
-        var newStudents: ArrayList<Student> = ArrayList()
+        val newStudents: ArrayList<Student> = ArrayList()
 
         students.sortByDescending {selector(it)}
         students.forEach {
@@ -56,14 +103,13 @@ class StudentsFragment : Fragment() {
                 counter++
             }
         }
-        students = newStudents
+        students.clear()
+        students.addAll(newStudents)
 
-        initializeAdapter()
-        initializeRecyclerView()
-        initializeLayoutManager()
+        updateAdapter()
     }
 
-    private fun initializeData(){
+    fun initializeData() {
         students.add(
             Student()
             .apply { name = "Max Brown"; age = 19; avatar =
@@ -104,12 +150,11 @@ class StudentsFragment : Fragment() {
             Student()
             .apply { name = "Armando Tree"; age = 21; avatar =
                 R.drawable.student_icon; group = "SEP-191"; avgMark = 8.5 })
+        rootStudents = students
     }
 
     private fun initializeLayoutManager(){
         recyclerview_fragment_students?.layoutManager = LinearLayoutManager(context)
-        recyclerview_fragment_students?.adapter =
-            StudentAdapter(students)
     }
 
     private fun initializeRecyclerView(){
