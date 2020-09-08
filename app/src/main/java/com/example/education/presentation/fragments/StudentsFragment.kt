@@ -16,12 +16,11 @@ import com.example.education.domain.usecase.function.sort.SortByRandomUseCase
 import com.example.education.presentation.adapter.StudentAdapter
 import kotlinx.android.synthetic.main.fragment_students.*
 
-class StudentsFragment : Fragment() {
+class StudentsFragment : BaseFragment() {
 
     var students: ArrayList<Student> = ArrayList()
     private var rootStudents: ArrayList<Student> = ArrayList()
     var adapter : StudentAdapter? = null
-    private var rootView : View? = null
     private val COUNT_BEST_STUDENTS = 50
 
     override fun onCreateView(
@@ -41,29 +40,28 @@ class StudentsFragment : Fragment() {
         initializeRecyclerView()
         initializeLayoutManager()
 
-//        fab_fragment_students.setOnClickListener {
-//            activity?.supportFragmentManager
-//                ?.beginTransaction()
-//                ?.hide(StudentsFragment())
-//                ?.add(R.id.frameLayout_activity_main_container, AddFragment())
-//                ?.commit()
-//        }
-
         sortArrayByMarks()
     }
 
     fun addStudent(name1: String, surname: String, mark: Double, group1: String) {
         students.add(Student().apply { name = "$name1 $surname"; age = 20; avgMark = mark;
             group = group1; avatar = R.drawable.student_icon })
-        Log.d("SIZE", students.size.toString())
+        rootStudents.clear()
+        rootStudents.addAll(students)
         updateAdapter()
     }
 
     fun searchForName(searchText: String) {
-        if(searchText == "" && students.size <= rootStudents.size)
-            students = rootStudents
-        else
-            students = SearchByNameUseCase(students, searchText).search()
+        if(searchText == "" && students.size <= rootStudents.size) {
+            students.clear()
+            students.addAll(rootStudents)
+            sortArrayByMarks()
+        }
+        else {
+            val newStudents = SearchByNameUseCase(students, searchText).search()
+            students.clear()
+            students.addAll(newStudents)
+        }
         updateAdapter()
     }
 
@@ -109,7 +107,7 @@ class StudentsFragment : Fragment() {
         updateAdapter()
     }
 
-    fun initializeData() {
+    override fun initializeData() {
         students.add(
             Student()
             .apply { name = "Max Brown"; age = 19; avatar =
@@ -150,7 +148,7 @@ class StudentsFragment : Fragment() {
             Student()
             .apply { name = "Armando Tree"; age = 21; avatar =
                 R.drawable.student_icon; group = "SEP-191"; avgMark = 8.5 })
-        rootStudents = students
+        rootStudents.addAll(students)
     }
 
     private fun initializeLayoutManager(){

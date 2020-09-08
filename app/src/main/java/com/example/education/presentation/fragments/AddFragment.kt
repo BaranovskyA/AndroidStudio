@@ -13,13 +13,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add.*
 
 
-class AddFragment : Fragment() {
-    private var rootView : View? = null
+class AddFragment : BaseFragment() {
     private var name: String = "null"
     private var surname: String = "null"
     private var mark: Double = 0.0
     private var group: String = "null"
-    var currentFragment: Fragment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +40,7 @@ class AddFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun initializeData() {
+    override fun initializeData() {
         if(edittext_fragment_add_name.text.isNotEmpty() && edittext_fragment_add_surname.text.isNotEmpty() &&
                 edittext_fragment_add_mark.text.isNotEmpty() && edittext_fragment_add_group.text.isNotEmpty()) {
             name = edittext_fragment_add_name.text.toString()
@@ -57,15 +55,6 @@ class AddFragment : Fragment() {
 
     fun addStudent() {
         toActivity(name, surname, mark, group)
-
-//        activity?.supportFragmentManager
-//            ?.beginTransaction()
-//            ?.remove(this)
-//            ?.commit()
-//        activity?.supportFragmentManager
-//            ?.beginTransaction()
-//            ?.show(StudentsFragment())
-//            ?.commit()
     }
 
     fun toActivity(name: String, surname: String, mark: Double, group: String) {

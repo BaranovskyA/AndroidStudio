@@ -14,26 +14,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_students.*
 
 
-class MainActivity : AppCompatActivity() {
-    val fragment = StudentsFragment()
-    val addFragment = AddFragment()
-    var currentFragment: Fragment? = null
-    var isVisibleFragment: Boolean = false
-
+class MainActivity : BaseActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        displayFragment(StudentsFragment())
+        initializeDefaultFragment()
 
         edittext_activity_main_search.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(s.isNullOrEmpty())
                     fragment.searchForName("")
@@ -55,42 +46,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         fab_fragment_students.setOnClickListener {
-            displayFragment(AddFragment())
+            displayFragment(addFragment)
         }
 
         textview_activity_main_api_version.text = "v" + Build.VERSION.SDK_INT.toString()
-    }
-
-    private fun displayFragment(fragmentTemp: Fragment) {
-        if(currentFragment == null) {
-            currentFragment = StudentsFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.frameLayout_activity_main_container, fragment)
-                .commit()
-
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.frameLayout_activity_main_container, addFragment)
-                .hide(addFragment)
-                .commit()
-        } else {
-            if(isVisibleFragment) {
-                supportFragmentManager
-                    .beginTransaction()
-                    .hide(addFragment)
-                    .show(fragment)
-                    .commit()
-            } else {
-                supportFragmentManager
-                    .beginTransaction()
-                    .hide(fragment)
-                    .show(addFragment)
-                    .commit()
-            }
-
-            isVisibleFragment = !isVisibleFragment
-        }
     }
 
     fun fromFragmentData(name: String, surname: String, mark: Double, group: String) {
