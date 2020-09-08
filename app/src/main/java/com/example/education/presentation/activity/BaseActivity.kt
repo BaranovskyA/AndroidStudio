@@ -4,11 +4,15 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.example.education.R
 import com.example.education.presentation.fragments.AddFragment
+import com.example.education.presentation.fragments.AddNoteFragment
+import com.example.education.presentation.fragments.NotesFragment
 import com.example.education.presentation.fragments.StudentsFragment
 
 abstract class BaseActivity : AppCompatActivity() {
     val fragment = StudentsFragment()
     val addFragment = AddFragment()
+    val noteFragment = NotesFragment()
+    val addNoteFragment = AddNoteFragment()
     var currentFragment: Fragment? = null
     var isVisibleFragment: Boolean = false
 
@@ -17,14 +21,14 @@ abstract class BaseActivity : AppCompatActivity() {
             if(isVisibleFragment) {
                 supportFragmentManager
                     .beginTransaction()
-                    .hide(addFragment)
-                    .show(fragment)
+                    .hide(addNoteFragment)
+                    .show(noteFragment)
                     .commit()
             } else {
                 supportFragmentManager
                     .beginTransaction()
-                    .hide(fragment)
-                    .show(addFragment)
+                    .hide(noteFragment)
+                    .show(addNoteFragment)
                     .commit()
             }
 
@@ -36,13 +40,13 @@ abstract class BaseActivity : AppCompatActivity() {
         currentFragment = StudentsFragment()
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, fragment)
+            .add(R.id.frameLayout_activity_main_container, noteFragment)
             .commit()
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, addFragment)
-            .hide(addFragment)
+            .add(R.id.frameLayout_activity_main_container, addNoteFragment)
+            .hide(addNoteFragment)
             .commit()
     }
 }

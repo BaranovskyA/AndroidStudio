@@ -8,6 +8,10 @@
     <string name="prompt_mark">Average mark</string>
     <string name="prompt_group">Group</string>
     <string name="prompt_add_student">Add student</string>
+    <string name="prompt_add_note">Add note</string>
+    <string name="prompt_title">Title</string>
+    <string name="prompt_description">Description</string>
+    <string name="prompt_deadline">Deadline</string>
     <string name="prompt_add">Add</string>
     <string name="prompt_repeat_password">Repeat password</string>
     <string name="title_activity_login">LoginActivity</string>

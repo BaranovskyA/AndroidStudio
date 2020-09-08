@@ -17,8 +17,6 @@ class StudentAdapter ( var students: ArrayList<Student> = ArrayList() ) : Recycl
     override fun getItemCount(): Int { return students.size }
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
-        Log.d("SIZE ADAPTER", students.size.toString())
-        Log.d("SIZE ADAPTER", students[position].name)
         holder.bindView(students[position])
 }
 }

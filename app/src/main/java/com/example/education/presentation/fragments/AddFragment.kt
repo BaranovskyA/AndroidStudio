@@ -3,13 +3,11 @@ package com.example.education.presentation.fragments
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.education.R
 import com.example.education.presentation.activity.MainActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add.*
 
 
@@ -60,7 +58,7 @@ class AddFragment : BaseFragment() {
     fun toActivity(name: String, surname: String, mark: Double, group: String) {
         val activity: Activity? = activity
         if (activity != null && !activity.isFinishing && activity is MainActivity) {
-            activity.fromFragmentData(name, surname, mark, group)
+            //activity.fromFragmentData(name, surname, mark, group)
         }
     }
 }
