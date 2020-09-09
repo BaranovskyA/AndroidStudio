@@ -3,16 +3,18 @@ package com.example.education.presentation.activity
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.example.education.R
+import com.example.education.data.Subject
 import com.example.education.presentation.adapter.StudentPagerAdapter
 import com.example.education.presentation.fragments.*
 import kotlinx.android.synthetic.main.fragment_students_pager.*
 
 abstract class BaseActivity : AppCompatActivity() {
-    val fragment = StudentsFragment()
-    val addFragment = AddFragment()
-    val noteFragment = NotesFragment()
-    val addNoteFragment = AddNoteFragment()
-    val studentPagerFragment = StudentsPagerFragment()
+    var fragment = StudentsFragment()
+    var addFragment = AddFragment()
+    var noteFragment = NotesFragment()
+    var addNoteFragment = AddNoteFragment()
+    var studentPagerFragment = StudentsPagerFragment()
+    var subjectFragment = SubjectsFragment()
     var currentFragment: Fragment? = null
     var isVisibleFragment: Boolean = false
 
@@ -22,12 +24,12 @@ abstract class BaseActivity : AppCompatActivity() {
                 supportFragmentManager
                     .beginTransaction()
                     .hide(addFragment)
-                    .show(fragment)
+                    .show(subjectFragment)
                     .commit()
             } else {
                 supportFragmentManager
                     .beginTransaction()
-                    .hide(fragment)
+                    .hide(subjectFragment)
                     .show(addFragment)
                     .commit()
             }
@@ -38,15 +40,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun initializeDefaultFragment() {
         currentFragment = StudentsFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, fragment)
-            .hide(fragment)
-            .commit()
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, studentPagerFragment)
+            .add(R.id.frameLayout_activity_main_container, subjectFragment)
             .commit()
 
         supportFragmentManager
@@ -54,5 +51,15 @@ abstract class BaseActivity : AppCompatActivity() {
             .add(R.id.frameLayout_activity_main_container, addFragment)
             .hide(addFragment)
             .commit()
+    }
+
+    fun initializeStudentsFragment(s: Subject) {
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.frameLayout_activity_main_container, fragment)
+            .hide(subjectFragment)
+            .commit()
+
+        fragment.initializeFromSubject(s)
     }
 }

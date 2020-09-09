@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.education.R
 import com.example.education.data.Student
+import com.example.education.data.Subject
 import com.example.education.domain.usecase.function.seach.SearchByNameUseCase
 import com.example.education.domain.usecase.function.sort.SortByMarkUseCase
 import com.example.education.domain.usecase.function.sort.SortByNameUseCase
@@ -34,12 +35,21 @@ class StudentsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initializeData()
+        //initializeData()
         initializeAdapter()
         initializeRecyclerView()
         initializeLayoutManager()
 
         sortArrayByMarks()
+    }
+
+    fun initializeFromSubject(s: Subject) {
+        students.clear()
+        rootStudents.clear()
+        students.addAll(s.pupils)
+        rootStudents.addAll(students)
+        initializeAdapter()
+        updateAdapter()
     }
 
     fun addStudent(name1: String, surname: String, mark: Double, group1: String) {
