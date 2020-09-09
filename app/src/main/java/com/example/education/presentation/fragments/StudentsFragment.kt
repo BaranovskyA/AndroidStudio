@@ -17,7 +17,6 @@ import com.example.education.presentation.adapter.StudentAdapter
 import kotlinx.android.synthetic.main.fragment_students.*
 
 class StudentsFragment : BaseFragment() {
-
     var students: ArrayList<Student> = ArrayList()
     private var rootStudents: ArrayList<Student> = ArrayList()
     var adapter : StudentAdapter? = null

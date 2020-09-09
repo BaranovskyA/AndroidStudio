@@ -57,13 +57,13 @@ class AddNoteFragment : BaseFragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun addStudent() {
-        toActivity(title, description, deadline)
+        //toActivity(title, description, deadline)
     }
 
-    fun toActivity(title: String, description: String, deadline: LocalDate) {
-        val activity: Activity? = activity
-        if (activity != null && !activity.isFinishing && activity is MainActivity) {
-            activity.fromFragmentData(title, description, deadline)
-        }
-    }
+//    fun toActivity(title: String, description: String, deadline: LocalDate) {
+//        val activity: Activity? = activity
+//        if (activity != null && !activity.isFinishing && activity is MainActivity) {
+//            activity.fromFragmentData(title, description, deadline)
+//        }
+//    }
 }

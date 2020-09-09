@@ -3,16 +3,16 @@ package com.example.education.presentation.activity
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.example.education.R
-import com.example.education.presentation.fragments.AddFragment
-import com.example.education.presentation.fragments.AddNoteFragment
-import com.example.education.presentation.fragments.NotesFragment
-import com.example.education.presentation.fragments.StudentsFragment
+import com.example.education.presentation.adapter.StudentPagerAdapter
+import com.example.education.presentation.fragments.*
+import kotlinx.android.synthetic.main.fragment_students_pager.*
 
 abstract class BaseActivity : AppCompatActivity() {
     val fragment = StudentsFragment()
     val addFragment = AddFragment()
     val noteFragment = NotesFragment()
     val addNoteFragment = AddNoteFragment()
+    val studentPagerFragment = StudentsPagerFragment()
     var currentFragment: Fragment? = null
     var isVisibleFragment: Boolean = false
 
@@ -21,14 +21,14 @@ abstract class BaseActivity : AppCompatActivity() {
             if(isVisibleFragment) {
                 supportFragmentManager
                     .beginTransaction()
-                    .hide(addNoteFragment)
-                    .show(noteFragment)
+                    .hide(addFragment)
+                    .show(fragment)
                     .commit()
             } else {
                 supportFragmentManager
                     .beginTransaction()
-                    .hide(noteFragment)
-                    .show(addNoteFragment)
+                    .hide(fragment)
+                    .show(addFragment)
                     .commit()
             }
 
@@ -40,13 +40,19 @@ abstract class BaseActivity : AppCompatActivity() {
         currentFragment = StudentsFragment()
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, noteFragment)
+            .add(R.id.frameLayout_activity_main_container, fragment)
+            .hide(fragment)
             .commit()
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, addNoteFragment)
-            .hide(addNoteFragment)
+            .add(R.id.frameLayout_activity_main_container, studentPagerFragment)
+            .commit()
+
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.frameLayout_activity_main_container, addFragment)
+            .hide(addFragment)
             .commit()
     }
 }
