@@ -8,6 +8,6 @@ class Note {
     var title: String = ""
     var description: String = ""
     @RequiresApi(Build.VERSION_CODES.O)
-    var dateDeadline: LocalDate = LocalDate.parse("2020-04-18")
+    var dateDeadline: String = LocalDate.parse("2020-04-18").toString()
     var avatar : Int? = null
 }

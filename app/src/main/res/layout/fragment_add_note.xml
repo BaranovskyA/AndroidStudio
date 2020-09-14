@@ -2,7 +2,8 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:layout_width="match_parent"
@@ -41,17 +42,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_add_note_title" />
 
-    <EditText
-        android:id="@+id/edittext_fragment_add_note_deadline"
+    <TextView
+        android:id="@+id/textview_fragment_add_note_deadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:hint="@string/prompt_deadline"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_add_note_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text = "Birthdate"
+        android:textAlignment="center"
+        android:padding="10dp"
+        />
+
+
+    <Button
+        android:id="@+id/button_fragment_add_note_deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEADLINE"
+        app:layout_constraintTop_toBottomOf="@+id/textview_fragment_add_note_deadline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_add_note_description" />
+        />
 
     <Button
         android:id="@+id/button_fragment_add_note"
@@ -60,7 +72,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_add_note_deadline"
+        app:layout_constraintTop_toBottomOf="@+id/button_fragment_add_note_deadline"
         android:text="@string/prompt_add" />
 
     <TextView

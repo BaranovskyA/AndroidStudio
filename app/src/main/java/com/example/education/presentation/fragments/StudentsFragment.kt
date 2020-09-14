@@ -56,9 +56,9 @@ class StudentsFragment : BaseFragment() {
         updateAdapter()
     }
 
-    fun addStudent(name1: String, surname: String, mark: Double, group1: String) {
-        students.add(Student().apply { name = "$name1 $surname"; age = 18; avgMark = mark;
-            group = group1; avatar = R.drawable.student_icon })
+    fun addStudent(name1: String, surname: String, mark: Double, group1: String, birthdate1: String) {
+        students.add(Student().apply { name = "$name1 $surname"; avgMark = mark;
+            group = group1; avatar = R.drawable.student_icon; birthdate = birthdate1 })
         rootStudents.clear()
         rootStudents.addAll(students)
         //updateAdapter()
@@ -124,44 +124,44 @@ class StudentsFragment : BaseFragment() {
         if(students.size == 0) {
             students.add(
                 Student()
-                    .apply { name = "Max Brown"; age = 19; avatar =
-                        R.drawable.student_icon; group = "SEP-171"; avgMark = 11.2 } )
+                    .apply { name = "Max Brown"; avatar =
+                        R.drawable.student_icon; group = "SEP-171"; avgMark = 11.2; birthdate = "11.01.2001" } )
             students.add(
                 Student()
-                    .apply { name = "Cassie Gray"; age = 18; avatar =
-                        R.drawable.student_icon; group = "SEP-161"; avgMark = 8.2 } )
+                    .apply { name = "Cassie Gray"; avatar =
+                        R.drawable.student_icon; group = "SEP-161"; avgMark = 8.2; birthdate = "11.01.2002" } )
             students.add(
                 Student()
-                    .apply { name = "John Green"; age = 21; avatar =
-                        R.drawable.student_icon; group = "SEP-191"; avgMark = 10.2 })
+                    .apply { name = "John Green"; avatar =
+                        R.drawable.student_icon; group = "SEP-191"; avgMark = 10.2; birthdate = "11.01.2000" })
             students.add(
                 Student()
-                    .apply { name = "Darvin Yellow"; age = 20; avatar =
-                        R.drawable.student_icon; group = "SEP-181"; avgMark = 12.0 })
+                    .apply { name = "Darvin Yellow"; avatar =
+                        R.drawable.student_icon; group = "SEP-181"; avgMark = 12.0; birthdate = "11.01.2001" })
             students.add(
                 Student()
-                    .apply { name = "Bob Purple"; age = 18; avatar =
-                        R.drawable.student_icon; group = "SEP-161"; avgMark = 11.1 })
+                    .apply { name = "Bob Purple"; avatar =
+                        R.drawable.student_icon; group = "SEP-161"; avgMark = 11.1; birthdate = "11.01.2003" })
             students.add(
                 Student()
-                    .apply { name = "Mike White"; age = 21; avatar =
-                        R.drawable.student_icon; group = "SEP-191"; avgMark = 11.6 })
+                    .apply { name = "Mike White"; avatar =
+                        R.drawable.student_icon; group = "SEP-191"; avgMark = 11.6; birthdate = "11.01.2001" })
             students.add(
                 Student()
-                    .apply { name = "Mitchell Red"; age = 21; avatar =
-                        R.drawable.student_icon; group = "SEP-191"; avgMark = 9.8 })
+                    .apply { name = "Mitchell Red"; avatar =
+                        R.drawable.student_icon; group = "SEP-191"; avgMark = 9.8; birthdate = "11.01.2002" })
             students.add(
                 Student()
-                    .apply { name = "Ariana Blue"; age = 20; avatar =
-                        R.drawable.student_icon; group = "SEP-181"; avgMark = 10.4 })
+                    .apply { name = "Ariana Blue"; avatar =
+                        R.drawable.student_icon; group = "SEP-181"; avgMark = 10.4; birthdate = "11.01.2000" })
             students.add(
                 Student()
-                    .apply { name = "Michael Stone"; age = 19; avatar =
-                        R.drawable.student_icon; group = "SEP-171"; avgMark = 9.1 })
+                    .apply { name = "Michael Stone"; avatar =
+                        R.drawable.student_icon; group = "SEP-171"; avgMark = 9.1; birthdate = "11.01.2000" })
             students.add(
                 Student()
-                    .apply { name = "Armando Tree"; age = 21; avatar =
-                        R.drawable.student_icon; group = "SEP-191"; avgMark = 8.5 })
+                    .apply { name = "Armando Tree"; avatar =
+                        R.drawable.student_icon; group = "SEP-191"; avgMark = 8.5; birthdate = "11.01.2001" })
             rootStudents.addAll(students)
         }
         return students

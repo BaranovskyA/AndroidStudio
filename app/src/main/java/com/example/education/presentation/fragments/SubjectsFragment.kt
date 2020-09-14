@@ -47,50 +47,50 @@ class SubjectsFragment : BaseFragment() {
     fun initializeData() {
         students.add(
             Student()
-                .apply { name = "Max Brown"; age = 19; avatar =
+                .apply { name = "Max Brown"; avatar =
                     R.drawable.student_icon; group = "SEP-171"; avgMark = 11.2 } )
         students.add(
             Student()
-                .apply { name = "Cassie Gray"; age = 18; avatar =
+                .apply { name = "Cassie Gray"; avatar =
                     R.drawable.student_icon; group = "SEP-161"; avgMark = 8.2 } )
         students.add(
             Student()
-                .apply { name = "John Green"; age = 21; avatar =
+                .apply { name = "John Green"; avatar =
                     R.drawable.student_icon; group = "SEP-191"; avgMark = 10.2 })
         students.add(
             Student()
-                .apply { name = "Darvin Yellow"; age = 20; avatar =
+                .apply { name = "Darvin Yellow"; avatar =
                     R.drawable.student_icon; group = "SEP-181"; avgMark = 12.0 })
         students.add(
             Student()
-                .apply { name = "Bob Purple"; age = 18; avatar =
+                .apply { name = "Bob Purple"; avatar =
                     R.drawable.student_icon; group = "SEP-161"; avgMark = 11.1 })
         students.add(
             Student()
-                .apply { name = "Mike White"; age = 21; avatar =
+                .apply { name = "Mike White"; avatar =
                     R.drawable.student_icon; group = "SEP-191"; avgMark = 11.6 })
         students.add(
             Student()
-                .apply { name = "Mitchell Red"; age = 21; avatar =
+                .apply { name = "Mitchell Red"; avatar =
                     R.drawable.student_icon; group = "SEP-191"; avgMark = 9.8 })
         students.add(
             Student()
-                .apply { name = "Ariana Blue"; age = 20; avatar =
+                .apply { name = "Ariana Blue"; avatar =
                     R.drawable.student_icon; group = "SEP-181"; avgMark = 10.4 })
         students.add(
             Student()
-                .apply { name = "Michael Stone"; age = 19; avatar =
+                .apply { name = "Michael Stone"; avatar =
                     R.drawable.student_icon; group = "SEP-171"; avgMark = 9.1 })
         students.add(
             Student()
-                .apply { name = "Armando Tree"; age = 21; avatar =
+                .apply { name = "Armando Tree"; avatar =
                     R.drawable.student_icon; group = "SEP-191"; avgMark = 8.5 })
         val s1: ArrayList<Student> = ArrayList()
-        s1.add(Student().apply { name = "Test Student 1"; age = 25; avatar =
+        s1.add(Student().apply { name = "Test Student 1"; avatar =
             R.drawable.student_icon; group = "SEP-1000"; avgMark = 12.0 })
 
         val s2: ArrayList<Student> = ArrayList()
-        s2.add(Student().apply { name = "Test Student 2"; age = 25; avatar =
+        s2.add(Student().apply { name = "Test Student 2"; avatar =
             R.drawable.student_icon; group = "SEP-2000"; avgMark = 15.0 })
 
         s1.addAll(s2)

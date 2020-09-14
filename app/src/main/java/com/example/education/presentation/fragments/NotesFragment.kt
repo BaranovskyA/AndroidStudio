@@ -14,6 +14,7 @@ import com.example.education.presentation.adapter.NoteAdapter
 import kotlinx.android.synthetic.main.fragment_notes.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -44,7 +45,7 @@ class NotesFragment : BaseFragment() {
         //sortArrayByDate()
     }
 
-    fun addNote(title1: String, description1: String, deadline: LocalDate) {
+    fun addNote(title1: String, description1: String, deadline: String) {
         notes.add(Note().apply { title = title1; description = description1; dateDeadline = deadline })
         updateAdapter()
     }
@@ -57,8 +58,10 @@ class NotesFragment : BaseFragment() {
         adapter = NoteAdapter(notes)
     }
 
-    fun selector(n: Note): LocalDate = n.dateDeadline
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun selector(n: Note): LocalDate = LocalDate.parse(n.dateDeadline)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun sortArrayByDate() {
         var counter = 0
         val newNotes: ArrayList<Note> = ArrayList()
@@ -80,11 +83,12 @@ class NotesFragment : BaseFragment() {
     @SuppressLint("SimpleDateFormat")
     fun initializeData(): ArrayList<Note> {
         if(notes.size == 0) {
-            notes.add(Note().apply { title = "Note 1"; description = "This is Note 1"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
-            notes.add(Note().apply { title = "Note 2"; description = "This is Note 2"; dateDeadline = LocalDate.now().minusYears(3); avatar = R.drawable.ic_baseline_assignment_24 })
-            notes.add(Note().apply { title = "Note 3"; description = "This is Note 3"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
-            notes.add(Note().apply { title = "Note 4"; description = "This is Note 4"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
-            notes.add(Note().apply { title = "Note 5"; description = "This is Note 5"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
+            val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+            notes.add(Note().apply { title = "Note 1"; description = "This is Note 1"; dateDeadline = LocalDate.now().format(formatter).toString(); avatar = R.drawable.ic_baseline_assignment_24 })
+            notes.add(Note().apply { title = "Note 2"; description = "This is Note 2"; dateDeadline = LocalDate.now().minusYears(3).format(formatter).toString(); avatar = R.drawable.ic_baseline_assignment_24 })
+            notes.add(Note().apply { title = "Note 3"; description = "This is Note 3"; dateDeadline = LocalDate.now().plusDays(18).format(formatter).toString(); avatar = R.drawable.ic_baseline_assignment_24 })
+            notes.add(Note().apply { title = "Note 4"; description = "This is Note 4"; dateDeadline = LocalDate.now().format(formatter).toString(); avatar = R.drawable.ic_baseline_assignment_24 })
+            notes.add(Note().apply { title = "Note 5"; description = "This is Note 5"; dateDeadline = LocalDate.now().format(formatter).toString(); avatar = R.drawable.ic_baseline_assignment_24 })
         }
         return notes
     }

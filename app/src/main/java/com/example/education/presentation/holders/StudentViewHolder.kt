@@ -12,7 +12,7 @@ class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         student.avatar?.let { itemView.imageview_fragment_item_avatar.setImageResource(it) }
         itemView.textview_fragment_item_group?.text = student.group
         itemView.textview_fragment_item_name?.text = student.name
-        itemView.textview_fragment_item_age?.text = "Age: ${student.age}"
+        itemView.textview_fragment_item_age?.text = "Birthdate: ${student.birthdate}"
         itemView.textview_fragment_item_mark?.text = "Average mark: ${student.avgMark}"
     }
 }

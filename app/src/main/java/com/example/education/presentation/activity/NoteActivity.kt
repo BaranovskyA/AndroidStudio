@@ -25,8 +25,8 @@ class NoteActivity : BaseActivity() {
 //        textview_activity_main_api_version.text = "v" + Build.VERSION.SDK_INT.toString()
     }
 
-    fun fromFragmentData(name: String, surname: String, mark: Double, group: String) {
+    fun fromFragmentData(name: String, surname: String, mark: Double, group: String, birthdate: String) {
         displayFragment(StudentsFragment())
-        fragment.addStudent(name, surname, mark, group)
+        fragment.addStudent(name, surname, mark, group, birthdate)
     }
 }

@@ -68,13 +68,13 @@ class MainActivity : BaseActivity() {
 //        textview_activity_main_api_version.text = "v" + Build.VERSION.SDK_INT.toString()
     }
 
-    fun fromFragmentStudentData(name: String, surname: String, mark: Double, group: String) {
+    fun fromFragmentStudentData(name: String, surname: String, mark: Double, group: String, birthdate: String) {
         //displayFragment(fragment)
-        fragment.addStudent(name, surname, mark, group)
+        fragment.addStudent(name, surname, mark, group, birthdate)
         adapter.notifyDataSetChanged()
     }
 
-    fun fromFragmentNoteData(title: String, description: String, deadline: LocalDate) {
+    fun fromFragmentNoteData(title: String, description: String, deadline: String) {
         displayFragment(noteFragment)
         noteFragment.addNote(title, description,  deadline)
     }
