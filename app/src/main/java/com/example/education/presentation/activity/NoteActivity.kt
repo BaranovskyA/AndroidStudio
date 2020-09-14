@@ -16,13 +16,13 @@ class NoteActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initializeDefaultFragment()
-
-        fab_fragment_students.setOnClickListener {
-            displayFragment(addFragment)
-        }
-
-        textview_activity_main_api_version.text = "v" + Build.VERSION.SDK_INT.toString()
+//        initializeDefaultFragment()
+//
+//        fab_fragment_students.setOnClickListener {
+//            displayFragment(addFragment)
+//        }
+//
+//        textview_activity_main_api_version.text = "v" + Build.VERSION.SDK_INT.toString()
     }
 
     fun fromFragmentData(name: String, surname: String, mark: Double, group: String) {

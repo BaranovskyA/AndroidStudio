@@ -8,97 +8,116 @@
     android:layout_height="match_parent"
     tools:context=".presentation.activity.MainActivity">
 
-    <TextView
-        android:id="@+id/textview_activity_main_sort_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="5dp"
-        android:text="@string/sort_by_text"
-        android:textAllCaps="true"
-        />
-
-    <Button
-        android:id="@+id/button_activity_main_sort_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/sort_by_name" />
-
-    <Button
-        android:id="@+id/button_activity_main_sort_mark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toEndOf="@+id/button_activity_main_sort_name"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/sort_by_mark" />
-
-    <Button
-        android:id="@+id/button_activity_main_sort_random"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toEndOf="@+id/button_activity_main_sort_mark"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/sort_by_random" />
-
-    <EditText
-        android:id="@+id/edittext_activity_main_search"
-        app:layout_constraintTop_toTopOf="parent"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout_activity_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:hint="@string/search_hint" />
+        android:layout_below="@+id/relativeLayout_activity_main"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabMode="fixed" >
 
-    <FrameLayout
-        android:id="@+id/frameLayout_activity_main_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="150dp"
-        />
+    </android.support.design.widget.TabLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/pager_activity_main_container"
+        android:id="@+id/viewpager_activity_main_container"
         android:layout_width="match_parent"
-        android:layout_height="580dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
     </android.support.v4.view.ViewPager>
 
-    <TextView
-        android:id="@+id/textview_activity_main_api_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="123123"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true" />
+<!--    <TextView-->
+<!--        android:id="@+id/textview_activity_main_sort_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:text="@string/sort_by_text"-->
+<!--        android:textAllCaps="true"-->
+<!--        />-->
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_fragment_students"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
-        android:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        android:foreground="@drawable/ic_baseline_add_24"
-        />
+<!--    <Button-->
+<!--        android:id="@+id/button_activity_main_sort_name"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="25dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:text="@string/sort_by_name" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/button_activity_main_sort_mark"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="25dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/button_activity_main_sort_name"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:text="@string/sort_by_mark" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/button_activity_main_sort_random"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="25dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/button_activity_main_sort_mark"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:text="@string/sort_by_random" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edittext_activity_main_search"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:layout_marginRight="30dp"-->
+<!--        android:hint="@string/search_hint" />-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/frameLayout_activity_main_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:paddingTop="150dp"-->
+<!--        />-->
+
+<!--    <android.support.v4.view.ViewPager-->
+<!--        android:id="@+id/pager_activity_main_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="580dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent">-->
+<!--    </android.support.v4.view.ViewPager>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textview_activity_main_api_version"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        tools:text="123123"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true" />-->
+
+<!--    <android.support.design.widget.FloatingActionButton-->
+<!--        android:id="@+id/fab_fragment_students"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_marginEnd="25dp"-->
+<!--        android:layout_marginBottom="25dp"-->
+<!--        android:elevation="6dp"-->
+<!--        app:pressedTranslationZ="12dp"-->
+<!--        android:foreground="@drawable/ic_baseline_add_24"-->
+<!--        />-->
 
 </android.support.constraint.ConstraintLayout>

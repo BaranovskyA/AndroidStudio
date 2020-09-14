@@ -44,7 +44,7 @@ class SubjectsFragment : BaseFragment() {
         adapter = SubjectAdapter(subjects, activity as MainActivity)
     }
 
-    override fun initializeData() {
+    fun initializeData() {
         students.add(
             Student()
                 .apply { name = "Max Brown"; age = 19; avatar =

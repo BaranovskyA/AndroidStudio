@@ -38,7 +38,7 @@ class AddFragment : BaseFragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    override fun initializeData() {
+    fun initializeData() {
         if(edittext_fragment_add_name.text.isNotEmpty() && edittext_fragment_add_surname.text.isNotEmpty() &&
                 edittext_fragment_add_mark.text.isNotEmpty() && edittext_fragment_add_group.text.isNotEmpty()) {
             name = edittext_fragment_add_name.text.toString()
@@ -58,7 +58,7 @@ class AddFragment : BaseFragment() {
     fun toActivity(name: String, surname: String, mark: Double, group: String) {
         val activity: Activity? = activity
         if (activity != null && !activity.isFinishing && activity is MainActivity) {
-            //activity.fromFragmentData(name, surname, mark, group)
+            activity.fromFragmentStudentData(name, surname, mark, group)
         }
     }
 }

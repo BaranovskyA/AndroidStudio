@@ -35,14 +35,14 @@ class AddNoteFragment : BaseFragment() {
         button_fragment_add_note.setOnClickListener {
             initializeData()
             if(textview_fragment_add_note_error.text == "") {
-                addStudent()
+                addNote()
             }
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
-    override fun initializeData() {
+    fun initializeData() {
         if(edittext_fragment_add_note_title.text.isNotEmpty() && edittext_fragment_add_note_description.text.isNotEmpty() &&
             edittext_fragment_add_note_deadline.text.isNotEmpty()) {
             title = edittext_fragment_add_note_title.text.toString()
@@ -56,14 +56,14 @@ class AddNoteFragment : BaseFragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun addStudent() {
-        //toActivity(title, description, deadline)
+    fun addNote() {
+        toActivity(title, description, deadline)
     }
 
-//    fun toActivity(title: String, description: String, deadline: LocalDate) {
-//        val activity: Activity? = activity
-//        if (activity != null && !activity.isFinishing && activity is MainActivity) {
-//            activity.fromFragmentData(title, description, deadline)
-//        }
-//    }
+    fun toActivity(title: String, description: String, deadline: LocalDate) {
+        val activity: Activity? = activity
+        if (activity != null && !activity.isFinishing && activity is MainActivity) {
+            activity.fromFragmentNoteData(title, description, deadline)
+        }
+    }
 }

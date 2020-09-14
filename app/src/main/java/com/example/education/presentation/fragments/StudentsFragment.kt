@@ -1,5 +1,6 @@
 package com.example.education.presentation.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.education.R
+import com.example.education.data.Note
 import com.example.education.data.Student
 import com.example.education.data.Subject
 import com.example.education.domain.usecase.function.seach.SearchByNameUseCase
@@ -15,6 +17,7 @@ import com.example.education.domain.usecase.function.sort.SortByMarkUseCase
 import com.example.education.domain.usecase.function.sort.SortByNameUseCase
 import com.example.education.domain.usecase.function.sort.SortByRandomUseCase
 import com.example.education.presentation.adapter.StudentAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_students.*
 
 class StudentsFragment : BaseFragment() {
@@ -32,10 +35,11 @@ class StudentsFragment : BaseFragment() {
         return rootView
     }
 
+    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //initializeData()
+        initializeData()
         initializeAdapter()
         initializeRecyclerView()
         initializeLayoutManager()
@@ -53,11 +57,11 @@ class StudentsFragment : BaseFragment() {
     }
 
     fun addStudent(name1: String, surname: String, mark: Double, group1: String) {
-        students.add(Student().apply { name = "$name1 $surname"; age = 20; avgMark = mark;
+        students.add(Student().apply { name = "$name1 $surname"; age = 18; avgMark = mark;
             group = group1; avatar = R.drawable.student_icon })
         rootStudents.clear()
         rootStudents.addAll(students)
-        updateAdapter()
+        //updateAdapter()
     }
 
     fun searchForName(searchText: String) {
@@ -116,48 +120,51 @@ class StudentsFragment : BaseFragment() {
         updateAdapter()
     }
 
-    override fun initializeData() {
-        students.add(
-            Student()
-            .apply { name = "Max Brown"; age = 19; avatar =
-                R.drawable.student_icon; group = "SEP-171"; avgMark = 11.2 } )
-        students.add(
-            Student()
-            .apply { name = "Cassie Gray"; age = 18; avatar =
-                R.drawable.student_icon; group = "SEP-161"; avgMark = 8.2 } )
-        students.add(
-            Student()
-            .apply { name = "John Green"; age = 21; avatar =
-                R.drawable.student_icon; group = "SEP-191"; avgMark = 10.2 })
-        students.add(
-            Student()
-            .apply { name = "Darvin Yellow"; age = 20; avatar =
-                R.drawable.student_icon; group = "SEP-181"; avgMark = 12.0 })
-        students.add(
-            Student()
-            .apply { name = "Bob Purple"; age = 18; avatar =
-                R.drawable.student_icon; group = "SEP-161"; avgMark = 11.1 })
-        students.add(
-            Student()
-            .apply { name = "Mike White"; age = 21; avatar =
-                R.drawable.student_icon; group = "SEP-191"; avgMark = 11.6 })
-        students.add(
-            Student()
-            .apply { name = "Mitchell Red"; age = 21; avatar =
-                R.drawable.student_icon; group = "SEP-191"; avgMark = 9.8 })
-        students.add(
-            Student()
-            .apply { name = "Ariana Blue"; age = 20; avatar =
-                R.drawable.student_icon; group = "SEP-181"; avgMark = 10.4 })
-        students.add(
-            Student()
-            .apply { name = "Michael Stone"; age = 19; avatar =
-                R.drawable.student_icon; group = "SEP-171"; avgMark = 9.1 })
-        students.add(
-            Student()
-            .apply { name = "Armando Tree"; age = 21; avatar =
-                R.drawable.student_icon; group = "SEP-191"; avgMark = 8.5 })
-        rootStudents.addAll(students)
+    fun initializeData(): ArrayList<Student> {
+        if(students.size == 0) {
+            students.add(
+                Student()
+                    .apply { name = "Max Brown"; age = 19; avatar =
+                        R.drawable.student_icon; group = "SEP-171"; avgMark = 11.2 } )
+            students.add(
+                Student()
+                    .apply { name = "Cassie Gray"; age = 18; avatar =
+                        R.drawable.student_icon; group = "SEP-161"; avgMark = 8.2 } )
+            students.add(
+                Student()
+                    .apply { name = "John Green"; age = 21; avatar =
+                        R.drawable.student_icon; group = "SEP-191"; avgMark = 10.2 })
+            students.add(
+                Student()
+                    .apply { name = "Darvin Yellow"; age = 20; avatar =
+                        R.drawable.student_icon; group = "SEP-181"; avgMark = 12.0 })
+            students.add(
+                Student()
+                    .apply { name = "Bob Purple"; age = 18; avatar =
+                        R.drawable.student_icon; group = "SEP-161"; avgMark = 11.1 })
+            students.add(
+                Student()
+                    .apply { name = "Mike White"; age = 21; avatar =
+                        R.drawable.student_icon; group = "SEP-191"; avgMark = 11.6 })
+            students.add(
+                Student()
+                    .apply { name = "Mitchell Red"; age = 21; avatar =
+                        R.drawable.student_icon; group = "SEP-191"; avgMark = 9.8 })
+            students.add(
+                Student()
+                    .apply { name = "Ariana Blue"; age = 20; avatar =
+                        R.drawable.student_icon; group = "SEP-181"; avgMark = 10.4 })
+            students.add(
+                Student()
+                    .apply { name = "Michael Stone"; age = 19; avatar =
+                        R.drawable.student_icon; group = "SEP-171"; avgMark = 9.1 })
+            students.add(
+                Student()
+                    .apply { name = "Armando Tree"; age = 21; avatar =
+                        R.drawable.student_icon; group = "SEP-191"; avgMark = 8.5 })
+            rootStudents.addAll(students)
+        }
+        return students
     }
 
     private fun initializeLayoutManager(){

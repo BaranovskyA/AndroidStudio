@@ -38,28 +38,28 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun initializeDefaultFragment() {
-        currentFragment = StudentsFragment()
-
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, subjectFragment)
-            .commit()
-
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, addFragment)
-            .hide(addFragment)
-            .commit()
-    }
-
-    fun initializeStudentsFragment(s: Subject) {
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.frameLayout_activity_main_container, fragment)
-            .hide(subjectFragment)
-            .commit()
-
-        fragment.initializeFromSubject(s)
-    }
+//    fun initializeDefaultFragment() {
+//        currentFragment = StudentsFragment()
+//
+//        supportFragmentManager
+//            .beginTransaction()
+//            .add(R.id.frameLayout_activity_main_container, subjectFragment)
+//            .commit()
+//
+//        supportFragmentManager
+//            .beginTransaction()
+//            .add(R.id.frameLayout_activity_main_container, addFragment)
+//            .hide(addFragment)
+//            .commit()
+//    }
+//
+//    fun initializeStudentsFragment(s: Subject) {
+//        supportFragmentManager
+//            .beginTransaction()
+//            .add(R.id.frameLayout_activity_main_container, fragment)
+//            .hide(subjectFragment)
+//            .commit()
+//
+//        fragment.initializeFromSubject(s)
+//    }
 }

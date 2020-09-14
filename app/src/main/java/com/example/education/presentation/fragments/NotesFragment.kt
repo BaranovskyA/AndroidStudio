@@ -78,12 +78,15 @@ class NotesFragment : BaseFragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SimpleDateFormat")
-    override fun initializeData() {
-        notes.add(Note().apply { title = "Note 1"; description = "This is Note 1"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
-        notes.add(Note().apply { title = "Note 2"; description = "This is Note 2"; dateDeadline = LocalDate.now().minusYears(3); avatar = R.drawable.ic_baseline_assignment_24 })
-        notes.add(Note().apply { title = "Note 3"; description = "This is Note 3"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
-        notes.add(Note().apply { title = "Note 4"; description = "This is Note 4"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
-        notes.add(Note().apply { title = "Note 5"; description = "This is Note 5"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
+    fun initializeData(): ArrayList<Note> {
+        if(notes.size == 0) {
+            notes.add(Note().apply { title = "Note 1"; description = "This is Note 1"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
+            notes.add(Note().apply { title = "Note 2"; description = "This is Note 2"; dateDeadline = LocalDate.now().minusYears(3); avatar = R.drawable.ic_baseline_assignment_24 })
+            notes.add(Note().apply { title = "Note 3"; description = "This is Note 3"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
+            notes.add(Note().apply { title = "Note 4"; description = "This is Note 4"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
+            notes.add(Note().apply { title = "Note 5"; description = "This is Note 5"; dateDeadline = LocalDate.now(); avatar = R.drawable.ic_baseline_assignment_24 })
+        }
+        return notes
     }
 
     private fun initializeLayoutManager(){

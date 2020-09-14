@@ -15,7 +15,7 @@ class SubjectViewHolder(itemView: View, activity: MainActivity) : RecyclerView.V
         itemView.textview_fragment_item_subject.text = "${subject.title}  ${subject.pupils.count()} students"
         itemView.textview_fragment_item_subject.setOnClickListener {
             Log.d("SUBJECT", subject.title)
-            refActivity.initializeStudentsFragment(subject)
+            //refActivity.initializeStudentsFragment(subject)
         }
     }
 
