@@ -3,7 +3,6 @@ package com.example.education.presentation.fragments
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import com.example.education.R
 import com.example.education.presentation.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_add.*
 import java.util.*
-
 
 class AddFragment : BaseFragment() {
     private var name: String = "null"

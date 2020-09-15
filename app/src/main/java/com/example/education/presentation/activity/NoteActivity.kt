@@ -1,13 +1,10 @@
 package com.example.education.presentation.activity
 
 import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import com.example.education.R
 import com.example.education.presentation.fragments.StudentsFragment
-import kotlinx.android.synthetic.main.activity_main.*
+
 
 class NoteActivity : BaseActivity() {
 

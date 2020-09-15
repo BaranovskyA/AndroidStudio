@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import com.example.education.R
 import com.example.education.data.Note
 import kotlinx.android.synthetic.main.fragment_notes_pager.*

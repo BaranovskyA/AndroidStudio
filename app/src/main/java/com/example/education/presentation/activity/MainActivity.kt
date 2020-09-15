@@ -2,17 +2,9 @@ package com.example.education.presentation.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.view.View
 import com.example.education.R
 import com.example.education.presentation.adapter.StudentPagerAdapter
-import com.example.education.presentation.fragments.AddFragment
-import com.example.education.presentation.fragments.AddNoteFragment
-import com.example.education.presentation.fragments.NotesFragment
-import com.example.education.presentation.fragments.StudentsFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_students.*
-import java.time.LocalDate
 
 
 class MainActivity : BaseActivity() {
@@ -36,6 +28,8 @@ class MainActivity : BaseActivity() {
 
         viewpager_activity_main_container.adapter = adapter
         tablayout_activity_main.setupWithViewPager(viewpager_activity_main_container)
+
+
 
 
 //        edittext_activity_main_search.addTextChangedListener(object : TextWatcher {

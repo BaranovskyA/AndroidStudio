@@ -1,7 +1,7 @@
 package com.example.education.data
 
 import android.os.Build
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import java.time.LocalDate
 
 class Note {

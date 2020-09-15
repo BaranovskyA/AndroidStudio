@@ -3,20 +3,17 @@ package com.example.education.presentation.fragments
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.education.R
 import com.example.education.data.Note
 import com.example.education.presentation.adapter.NoteAdapter
 import kotlinx.android.synthetic.main.fragment_notes.*
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.*
-import kotlin.collections.ArrayList
 
 class NotesFragment : BaseFragment() {
 

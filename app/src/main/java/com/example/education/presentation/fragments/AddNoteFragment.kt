@@ -5,16 +5,15 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import com.example.education.R
 import com.example.education.presentation.activity.MainActivity
-import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add_note.*
-import java.time.LocalDate
 import java.util.*
+
 
 class AddNoteFragment : BaseFragment() {
     private var title: String = "null"

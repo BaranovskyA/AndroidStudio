@@ -3,15 +3,13 @@ package com.example.education.presentation.holders
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.RecyclerView
 import com.example.education.R
 import com.example.education.data.Note
 import kotlinx.android.synthetic.main.fragment_item_note.view.*
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class NoteViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {

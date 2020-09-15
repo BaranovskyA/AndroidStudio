@@ -1,9 +1,9 @@
 package com.example.education.presentation.holders
 
 import android.annotation.SuppressLint
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.example.education.data.Subject
 import com.example.education.presentation.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_item_subject.view.*

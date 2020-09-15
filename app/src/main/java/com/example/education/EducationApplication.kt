@@ -5,7 +5,6 @@ import androidx.room.Room
 import com.example.education.data.EducationDatabase
 
 class EducationApplication : MultiDexApplication() {
-
     var db: EducationDatabase? = null
 
     override fun onCreate() {

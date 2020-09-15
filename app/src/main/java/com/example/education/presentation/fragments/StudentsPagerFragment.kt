@@ -9,7 +9,6 @@ import com.example.education.R
 import com.example.education.data.Student
 import kotlinx.android.synthetic.main.fragment_students_pager.*
 
-
 class StudentsPagerFragment () : BaseFragment() {
     val ARGUMENT_STUDENT_NAME = "arg_student_name"
     val ARGUMENT_STUDENT_GROUP = "arg_student_group"

@@ -2,14 +2,11 @@ package com.example.education.presentation.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.education.R
-import com.example.education.data.Note
 import com.example.education.data.Student
 import com.example.education.data.Subject
 import com.example.education.domain.usecase.function.seach.SearchByNameUseCase
@@ -17,7 +14,6 @@ import com.example.education.domain.usecase.function.sort.SortByMarkUseCase
 import com.example.education.domain.usecase.function.sort.SortByNameUseCase
 import com.example.education.domain.usecase.function.sort.SortByRandomUseCase
 import com.example.education.presentation.adapter.StudentAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_students.*
 
 class StudentsFragment : BaseFragment() {

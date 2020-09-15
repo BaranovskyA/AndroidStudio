@@ -1,12 +1,8 @@
 package com.example.education.presentation.activity
 
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import com.example.education.R
-import com.example.education.data.Subject
-import com.example.education.presentation.adapter.StudentPagerAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.education.presentation.fragments.*
-import kotlinx.android.synthetic.main.fragment_students_pager.*
 
 abstract class BaseActivity : AppCompatActivity() {
     var fragment = StudentsFragment()
