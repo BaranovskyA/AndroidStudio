@@ -7,3 +7,4 @@ class Student {
     var group : String = ""
     var avgMark : Double = 0.0
 }
+
