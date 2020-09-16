@@ -2,11 +2,13 @@ package com.example.education.presentation.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.education.R
+import com.example.education.data.ApiConnection
 import com.example.education.data.Student
 import com.example.education.data.Subject
 import com.example.education.domain.usecase.function.seach.SearchByNameUseCase
@@ -15,6 +17,9 @@ import com.example.education.domain.usecase.function.sort.SortByNameUseCase
 import com.example.education.domain.usecase.function.sort.SortByRandomUseCase
 import com.example.education.presentation.adapter.StudentAdapter
 import kotlinx.android.synthetic.main.fragment_students.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class StudentsFragment : BaseFragment() {
     var students: ArrayList<Student> = ArrayList()
@@ -169,5 +174,23 @@ class StudentsFragment : BaseFragment() {
 
     private fun initializeRecyclerView(){
         recyclerview_fragment_students?.adapter = adapter
+    }
+
+    fun initiateRequest(){
+        val apiConnection = ApiConnection()
+        apiConnection.initializeAPIObject().initiateGetRates().enqueue(object:
+            Callback<Student> {
+            override fun onFailure(call: Call<Student>, t: Throwable) {
+                Log.d("Failure", "fail")
+            }
+
+            override fun onResponse(
+                call: Call<Student>,
+                response: Response<Student>
+            ) {
+                val currencyObject = response.body()
+                Log.d("Success", currencyObject.toString())
+            }
+        })
     }
 }
