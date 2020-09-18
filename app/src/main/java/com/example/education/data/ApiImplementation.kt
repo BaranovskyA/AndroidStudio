@@ -1,5 +1,6 @@
 package com.example.education.data
 
+import com.example.education.domain.usecase.function.sort.CurrencyObject
 import io.reactivex.Observable
 import retrofit2.Response
 
@@ -11,7 +12,7 @@ class ApiImplementation : Api{
         api = ApiConnection().initializeAPIObject()
     }
 
-    override fun initiateGetRates(): Observable<Response<Student>> {
-        return api.initiateGetRates()
+    override fun initiateGetWeather(): Observable<Response<CurrencyObject>> {
+        return api.initiateGetWeather()
     }
 }

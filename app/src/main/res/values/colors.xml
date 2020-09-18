@@ -7,4 +7,10 @@
     <color name="colorGreen">#4CAF50</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#bbbbbb</color>
+    <color name="colorDarkGray">#353535</color>
+
+    <color name="colorCloudy">#00B0FF</color>
+    <color name="colorSunny">#cddc39</color>
+    <color name="colorRainy">#673ab7</color>
+    <color name="colorStorm">#f44336</color>
 </resources>

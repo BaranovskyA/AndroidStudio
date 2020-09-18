@@ -15,7 +15,7 @@ android {
     buildToolsVersion "30.0.1"
     defaultConfig {
         multiDexEnabled true
-        applicationId "suyun.personal.education"
+        applicationId "com.example.education"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1

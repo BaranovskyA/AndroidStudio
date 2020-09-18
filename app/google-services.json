@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:142361475125:android:18a8a1ef80606adfca597c",
         "android_client_info": {
-          "package_name": "suyun.personal.education"
+          "package_name": "com.example.education"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "142361475125-1nau3bugjdlssapqf1vaom4stubm84sh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "suyun.personal.education",
+            "package_name": "com.example.education",
             "certificate_hash": "00a9c58bbdfa2c5dcc84ee6135e415fb5e25a4e2"
           }
         },
