@@ -1,22 +1,21 @@
 package com.example.education.presentation.holders
 
 import android.annotation.SuppressLint
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.education.R
 import com.example.education.data.City
-import com.example.education.data.Weather
+import com.example.education.presentation.activity.BaseActivity
 import kotlinx.android.synthetic.main.fragment_item_weather.view.*
 import java.util.*
 import kotlin.math.roundToInt
 
 class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     @SuppressLint("SetTextI18n", "ResourceAsColor")
-    fun bindView(city: City) {
+    fun bindView(city: City, activity: BaseActivity) {
         itemView.imageview_fragment_item_weather_icon.setImageResource(city.weather.situationIcon)
-        itemView.constraintlayout_fragment_item_weather.background.setColorFilter(city.weather.backgroundColor, PorterDuff.Mode.SRC_ATOP)
+        itemView.constraintlayout_fragment_item_weather.setBackgroundColor(ContextCompat.getColor(activity.applicationContext, city.weather.backgroundColor))
         itemView.textview_fragment_item_weather.text = "${city.name},${city.countyCode.toUpperCase(Locale.ROOT)}"
         itemView.textview_fragment_item_weather_situation.text = city.weather.situation.toUpperCase(Locale.ROOT)
         itemView.textview_fragment_item_weather_temperature.text = "${city.weather.temperature.roundToInt()} °C"
@@ -48,5 +47,13 @@ class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             Locale.ROOT).substring(0,3)
         itemView.textview_fragment_item_weather_small_temperature_fifth.text = "${city.weather.small_temperature_fifth} °C"
         itemView.imageview_fragment_item_weather_icon_small_fifth.setImageResource(city.weather.small_situation_icon_fifth)
+
+        itemView.imageview_fragment_item_weather_menu.setOnClickListener {
+            activity.supportFragmentManager
+                .beginTransaction()
+                .add(R.id.linearlayout_activity_main_container, activity.cityFragment)
+                .remove(activity.weatherFragment)
+                .commit()
+        }
     }
 }

@@ -8,7 +8,7 @@ import com.example.education.R
 class Weather {
     @PrimaryKey(autoGenerate = true) var weatherId: Int = 0
     var situationIcon: Int = R.drawable.ic_baseline_cloud_queue_24
-    var backgroundColor: Int = R.color.colorCloudy
+    var backgroundColor: Int = R.color.colorGray
     var situation: String = ""
     var temperature: Double = 0.0
     var pressure: Int = 0

@@ -1,19 +1,19 @@
 package com.example.education.data
 
-import com.example.education.domain.usecase.function.sort.CurrencyObject
+import com.example.education.domain.usecase.function.sort.WeatherResult
 import io.reactivex.Observable
 import com.example.education.domain.usecase.function.sort.WeatherDomainRepository
 import java.lang.Exception
 
-class WeatherRepository: WeatherDomainRepository {
-    lateinit var apiImplementation: ApiImplementation
+class WeatherRepository() : WeatherDomainRepository {
+    var apiImplementation: ApiImplementation
 
-    constructor() {
+    init {
         apiImplementation = ApiImplementation()
     }
 
-    override fun initiateGetWeather(): Observable<CurrencyObject> {
-        return apiImplementation.initiateGetWeather().map {response ->
+    override fun initiateGetWeather(): Observable<WeatherResult> {
+        return apiImplementation.initiateGetWeather().map { response ->
             if(response.isSuccessful)
                 response.body()
             else

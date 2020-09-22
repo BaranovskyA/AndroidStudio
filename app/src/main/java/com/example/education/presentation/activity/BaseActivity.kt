@@ -4,14 +4,12 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.education.R
+import com.example.education.data.City
 import com.example.education.presentation.fragments.*
 
 abstract class BaseActivity : AppCompatActivity() {
-    var cityFragment = CityFragment()
-    var weatherFragment = WeatherFragment()
-
-    var currentFragment: Fragment? = null
-    var isVisibleFragment: Boolean = false
+    var cityFragment = CityFragment(this)
+    var weatherFragment = WeatherFragment(City("",""), this)
 
     @SuppressLint("ResourceType")
     fun displayFragment() {

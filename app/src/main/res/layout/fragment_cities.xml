@@ -8,28 +8,17 @@
         android:id="@+id/recyclerview_fragment_cities"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorGray"
-        android:paddingBottom="70dp"/>
+        android:background="@color/colorDarkGray" />
 
     <Button
         android:id="@+id/button_fragment_cities_add_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
-        android:background="@color/colorDarkGray"
-        android:layout_margin="15dp"
+        android:background="@color/colorGray"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/add_location_button"
-        />
-
-    <TextView
-        android:id="@+id/textview_fragment_cities_new_city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="0sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

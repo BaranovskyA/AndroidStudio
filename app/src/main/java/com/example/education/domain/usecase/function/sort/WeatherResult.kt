@@ -14,7 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class CurrencyObject (
+data class WeatherResult (
 
 	@SerializedName("coord") val coord : Coord,
 	@SerializedName("weather") val weather : List<Weather>,

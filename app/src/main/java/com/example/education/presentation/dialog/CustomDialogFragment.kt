@@ -1,4 +1,4 @@
-package com.example.education.presentation.fragments
+package com.example.education.presentation.dialog
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -15,7 +15,7 @@ import io.reactivex.annotations.NonNull
 import kotlinx.android.synthetic.main.fragment_dialog.*
 
 class CustomDialogFragment: DialogFragment() {
-    var editText: EditText? = null
+    lateinit var editText: EditText
     var onOk: (() -> Unit)? = null
 
     @SuppressLint("InflateParams")
@@ -28,7 +28,7 @@ class CustomDialogFragment: DialogFragment() {
             .setView(view)
             .setPositiveButton("ADD LOCATION"
             ) { _, _ ->
-                editText?.text = Editable.Factory.getInstance().newEditable("Brazilia,br")
+                editText = dialog?.edittext_fragment_dialog!!
                 onOk?.invoke()
             }
             .setNegativeButton("CANCEL", null)

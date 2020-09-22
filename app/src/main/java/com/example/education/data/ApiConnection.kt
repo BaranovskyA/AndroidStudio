@@ -12,7 +12,7 @@ class ApiConnection {
         return Retrofit.Builder()
             .baseUrl(ApiConstants.BASE_URL)
             .client(initializeOkHttpClient())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()   )
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

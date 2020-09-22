@@ -9,22 +9,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.education.R
 import com.example.education.data.City
-import com.example.education.domain.usecase.function.sort.CurrencyObject
-import com.example.education.domain.usecase.function.sort.RequestCurrencyUseCase
+import com.example.education.data.Weather
+import com.example.education.domain.usecase.function.sort.WeatherResult
+import com.example.education.domain.usecase.function.sort.RequestCurrentWeatherUseCase
+import com.example.education.presentation.activity.BaseActivity
 import com.example.education.presentation.adapter.CityAdapter
-import io.fabric.sdk.android.services.concurrency.AsyncTask
+import com.example.education.presentation.dialog.CustomDialogFragment
 import io.reactivex.observers.DisposableObserver
 import kotlinx.android.synthetic.main.fragment_cities.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
 
-
-class CityFragment : BaseFragment() {
+class CityFragment(private val activity: BaseActivity) : BaseFragment() {
     var cities: ArrayList<City> = ArrayList()
     var adapter : CityAdapter? = null
 
-    lateinit var currencyUseCase: RequestCurrencyUseCase
+    lateinit var currentWeatherUseCase: RequestCurrentWeatherUseCase
 
     @SuppressLint("CheckResult")
     override fun onCreateView(
@@ -33,15 +31,12 @@ class CityFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         rootView = LayoutInflater.from(context).inflate(R.layout.fragment_cities, container, false)
-        currencyUseCase = RequestCurrencyUseCase()
-        currencyUseCase.execute(CurrencyObserver())
-        val obj = currencyUseCase.createObservableObject()
 
-        obj.map {
-            val a: String = it.weather[0].description
-            Log.d("CITY FRAGMENT", it.toString())
-        }
-        currencyUseCase.dispose()
+        val currenctWeatherObserver: CurrentWeatherObserver = CurrentWeatherObserver()
+
+        currentWeatherUseCase = RequestCurrentWeatherUseCase()
+        currentWeatherUseCase.execute(currenctWeatherObserver)
+        currentWeatherUseCase.dispose()
         return rootView
     }
 
@@ -56,61 +51,35 @@ class CityFragment : BaseFragment() {
         initializeLayoutManager()
 
         initializeOnClickListener()
-
-        //someTask().execute()
     }
 
     override fun onStop() {
         super.onStop()
-        currencyUseCase.clear()
+        currentWeatherUseCase.clear()
     }
 
-    class CurrencyObserver : DisposableObserver<CurrencyObject>(){
-        override fun onComplete() {}
+    class CurrentWeatherObserver : DisposableObserver<WeatherResult>() {
+        override fun onComplete() {
+        }
 
-        override fun onNext(t: CurrencyObject) {
+        override fun onNext(t: WeatherResult) {
             Log.d("HERE", t.toString())
         }
 
-        override fun onError(e: Throwable) {}
+        override fun onError(e: Throwable) {
+        }
 
     }
-
-    class someTask() : AsyncTask<Void, Void, String>() {
-        override fun doInBackground(vararg params: Void?): String? {
-            val client = OkHttpClient()
-
-            val request: Request = Request.Builder()
-                .url("https://api.openweathermap.org/data/2.5/weather?q=London&appid=2d9cfba3368d9069cdf80846151df67c")
-                .get()
-                .build()
-
-            val response: Response = client.newCall(request).execute()
-
-            if(response.isSuccessful) run {
-                
-            }
-
-            return response.toString()
-        }
-
-        override fun onPreExecute() {
-            super.onPreExecute()
-        }
-
-        override fun onPostExecute(result: String?) {
-            super.onPostExecute(result)
-        }
-    }
-
 
     fun initializeOnClickListener() {
         button_fragment_cities_add_location.setOnClickListener {
-            val dialog = CustomDialogFragment()
+            val dialog =
+                CustomDialogFragment()
             dialog.onOk = {
-                addCity("Brazilia, br")
+                addCity(dialog.editText.text.toString())
+                button_fragment_cities_add_location.visibility = View.INVISIBLE
             }
-            activity?.supportFragmentManager?.let { it1 -> dialog.show(it1, "Custom") }
+            dialog.show(activity.supportFragmentManager, "Custom")
         }
     }
 
@@ -120,9 +89,15 @@ class CityFragment : BaseFragment() {
         updateAdapter()
     }
 
-    fun sortCitiesByName() {
+    fun addCityFromResponse(response: WeatherResult?) {
+        if (response != null) {
+            val w1: Weather = Weather().apply { situation = "Cloudy"; temperature = 30.0; pressure = 1000; humidity = 81;
+                windSpeed = 4.6; small_day_first = "SAT"; small_temperature_first = 30.0; small_day_second = "SUN"; small_temperature_second = 30.0;
+                small_day_third = "MON"; small_temperature_third = 29.0; small_day_fourth = "TUE"; small_temperature_fourth = 29.0;
+                small_day_fifth = "WED"; small_temperature_fifth = 30.0;}
 
-        updateAdapter()
+            cities.add(City(response.name, response.sys.country).apply { weather = w1 })
+        }
     }
 
     fun updateAdapter() {
@@ -130,14 +105,7 @@ class CityFragment : BaseFragment() {
     }
 
     fun initializeAdapter(){
-        adapter = CityAdapter(cities)
-    }
-
-    fun initializeData(): ArrayList<City> {
-        if(cities.size == 0) {
-            cities.add( City("London", "uk"))
-        }
-        return cities
+        adapter = CityAdapter(cities, activity)
     }
 
     private fun initializeLayoutManager(){
@@ -148,4 +116,86 @@ class CityFragment : BaseFragment() {
         recyclerview_fragment_cities?.adapter = adapter
     }
 
+
+
+
+
+    fun initializeData(): ArrayList<City> {
+        if (cities.size == 0) {
+            val w1: Weather = Weather().apply {
+                situation = "Cloudy"; temperature = 24.8; pressure = 1021; humidity =
+                69; backgroundColor = R.color.colorCloudy;
+                windSpeed = 3.2; small_day_first = "WED"; small_situation_icon_first =
+                R.drawable.ic_baseline_cloud_queue_24; small_temperature_first = 26.1;
+                small_day_second = "THU"; small_temperature_second =
+                28.8; small_situation_icon_second = R.drawable.ic_baseline_sunny;
+                small_day_third = "FRI"; small_temperature_third = 25.5;small_situation_icon_third =
+                R.drawable.ic_baseline_thunder;
+                small_day_fourth = "SAT"; small_temperature_fourth =
+                29.0;small_situation_icon_fourth = R.drawable.ic_baseline_sunny_cloud;
+                small_day_fifth = "SUN"; small_temperature_fifth = 30.7;small_situation_icon_fifth =
+                R.drawable.ic_baseline_sunny;
+            }
+
+            cities.add(City("London", "uk").apply { weather = w1 })
+
+            val w2: Weather = Weather().apply {
+                situation = "Sunny"; temperature = 24.8; pressure = 1021; humidity =
+                69; situationIcon = R.drawable.ic_baseline_sunny; backgroundColor =
+                R.color.colorSunny;
+                windSpeed = 3.2; small_day_first = "WED"; small_situation_icon_first =
+                R.drawable.ic_baseline_cloud_queue_24; small_temperature_first = 26.1;
+                small_day_second = "THU"; small_temperature_second =
+                28.8; small_situation_icon_second = R.drawable.ic_baseline_sunny;
+                small_day_third = "FRI"; small_temperature_third = 25.5;small_situation_icon_third =
+                R.drawable.ic_baseline_thunder;
+                small_day_fourth = "SAT"; small_temperature_fourth =
+                29.0;small_situation_icon_fourth = R.drawable.ic_baseline_sunny_cloud;
+                small_day_fifth = "SUN"; small_temperature_fifth = 30.7;small_situation_icon_fifth =
+                R.drawable.ic_baseline_sunny;
+            }
+
+
+            cities.add(City("Russia", "ru").apply { weather = w2 })
+
+            val w3: Weather = Weather().apply {
+                situation = "Rainy"; temperature = 24.8; pressure = 1021; humidity =
+                69; situationIcon = R.drawable.ic_baseline_rainy_24; backgroundColor =
+                R.color.colorRainy;
+                windSpeed = 3.2; small_day_first = "WED"; small_situation_icon_first =
+                R.drawable.ic_baseline_cloud_queue_24; small_temperature_first = 26.1;
+                small_day_second = "THU"; small_temperature_second =
+                28.8; small_situation_icon_second = R.drawable.ic_baseline_sunny;
+                small_day_third = "FRI"; small_temperature_third = 25.5;small_situation_icon_third =
+                R.drawable.ic_baseline_thunder;
+                small_day_fourth = "SAT"; small_temperature_fourth =
+                29.0;small_situation_icon_fourth = R.drawable.ic_baseline_sunny_cloud;
+                small_day_fifth = "SUN"; small_temperature_fifth = 30.7;small_situation_icon_fifth =
+                R.drawable.ic_baseline_sunny;
+            }
+
+
+            cities.add(City("Kazakhstan", "kz").apply { weather = w3 })
+
+            val w4: Weather = Weather().apply {
+                situation = "Storm"; temperature = 24.8; pressure = 1021; humidity =
+                69; situationIcon = R.drawable.ic_baseline_thunder; backgroundColor =
+                R.color.colorStorm;
+                windSpeed = 10.1; small_day_first = "WED"; small_situation_icon_first =
+                R.drawable.ic_baseline_cloud_queue_24; small_temperature_first = 26.1;
+                small_day_second = "THU"; small_temperature_second =
+                28.8; small_situation_icon_second = R.drawable.ic_baseline_sunny;
+                small_day_third = "FRI"; small_temperature_third = 25.5;small_situation_icon_third =
+                R.drawable.ic_baseline_thunder;
+                small_day_fourth = "SAT"; small_temperature_fourth =
+                29.0;small_situation_icon_fourth = R.drawable.ic_baseline_sunny_cloud;
+                small_day_fifth = "SUN"; small_temperature_fifth = 30.7;small_situation_icon_fifth =
+                R.drawable.ic_baseline_sunny;
+            }
+
+
+            cities.add(City("Brazilia", "br").apply { weather = w4 })
+        }
+        return cities
+    }
 }
